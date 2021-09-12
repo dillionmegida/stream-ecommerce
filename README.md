@@ -14,6 +14,7 @@ This is a sample project showing how to integrate [the React SDK for Stream](htt
   - [Adding the environment variables](#adding-the-environment-variables)
   - [Running the server](#running-the-server)
   - [Viewing the database](#viewing-the-database)
+- [Deployment](#deployment)
 - [Author](#author)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -92,6 +93,12 @@ And the application can be run on `localhost:3000`.
 When you open the MongoDB Compass to view the database, the database will only have the products collection, but it would be empty. To populate the database, you can signup as a seller. And in the Compass app, you'll see the "sellers" collection with the new seller.
 
 So, you can go ahead to add more models and collections.
+
+### Deployment
+
+You can deploy the Next.js application to [Vercel](https://nextjs.org/docs/deployment) seamlessly. For your MongoDB database, you can create your database on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/). From Atlas, you can get your URI and use that in your environment variable.
+
+You can also use the [MongoDB Compass](https://www.mongodb.com/try/download/compass) to view the database on Atlas. You just need to connect using the URI from Atlas.
 
 ## Author
 
