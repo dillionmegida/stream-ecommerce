@@ -5,6 +5,7 @@ import AuthForm from '@molecules/auth-form'
 import { toast } from 'react-toastify'
 import links from '@constants/links'
 import Link from 'next/link'
+import { setCookie } from 'src/utils/cookie'
 
 export default function BuyerRegister() {
   const [processing, setProcessing] = useState(false)
@@ -15,7 +16,9 @@ export default function BuyerRegister() {
     setProcessing(true)
 
     try {
-      await axios({
+      const {
+        data: { token },
+      } = await axios({
         method: 'post',
         url: '/api/buyer/register',
         data: {
@@ -23,6 +26,8 @@ export default function BuyerRegister() {
           password,
         },
       })
+
+      setCookie('AUTH', token)
 
       toast.success('Account created successful')
 

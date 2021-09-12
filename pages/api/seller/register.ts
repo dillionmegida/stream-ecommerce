@@ -5,6 +5,7 @@ import middleware from 'server/middlewares/database'
 import { Mongoose } from 'mongoose'
 import SellerModel from 'server/models/seller.model'
 import { hashPassword } from 'server/utils/password'
+import { createToken } from 'server/utils/token'
 
 const handler = nc()
   .use(middleware)
@@ -28,13 +29,20 @@ const handler = nc()
 
         const hashedPassword = await hashPassword(password)
 
-        new SellerModel({
+        const newSeller = new SellerModel({
           email,
           password: hashedPassword,
         }).save()
 
+        const token = createToken({
+          _id: newSeller._id,
+          email: newSeller.email,
+          type: 'seller',
+        })
+
         res.status(StatusCodes.CREATED).json({
           message: 'Account created successfully',
+          token,
         })
       } catch (err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

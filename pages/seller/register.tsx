@@ -5,6 +5,7 @@ import AuthForm from '@molecules/auth-form'
 import { toast } from 'react-toastify'
 import links from '@constants/links'
 import Link from 'next/link'
+import { setCookie } from 'src/utils/cookie'
 
 export default function SellerRegister() {
   const [processing, setProcessing] = useState(false)
@@ -15,7 +16,9 @@ export default function SellerRegister() {
     setProcessing(true)
 
     try {
-      await axios({
+      const {
+        data: { token },
+      } = await axios({
         method: 'post',
         url: '/api/seller/register',
         data: {
@@ -23,6 +26,8 @@ export default function SellerRegister() {
           password,
         },
       })
+
+      setCookie('AUTH', token)
 
       window.location.href = '/seller/dashboard'
     } catch (err) {
