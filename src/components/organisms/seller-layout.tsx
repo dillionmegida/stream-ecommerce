@@ -43,6 +43,11 @@ export default function SellerLayout({ children }: Props) {
           </Link>
           <nav>
             <ul className="flex items-center justify-center">
+              <li className="mr-5">
+                <Link href={links.SELLER.PRODUCTS}>
+                  <a className="underline">Products</a>
+                </Link>
+              </li>
               <li>
                 <button onClick={logout} className="underline">
                   Logout
