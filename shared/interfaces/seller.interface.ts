@@ -1,5 +1,5 @@
 export default interface SellerInterface {
-  id: string
+  _id: string
   email: string
   password: string
 }

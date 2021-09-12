@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useState } from 'react'
 import Link from 'next/link'
-import { authHeader, removeCookie } from 'src/utils/cookie'
-import axios from 'axios'
+import { removeCookie } from 'src/utils/cookie'
 import links from '@constants/links'
+import getAuthBuyer from 'src/queries/getAuthBuyer'
 
 type Props = {
   children: ReactNode
@@ -17,13 +17,7 @@ export default function BuyerLayout({ children }: Props) {
   }
 
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: '/api/buyer/me',
-      headers: {
-        ...authHeader,
-      },
-    })
+    getAuthBuyer()
       .then(() => setLoggedIn(true))
       .catch(
         () =>
