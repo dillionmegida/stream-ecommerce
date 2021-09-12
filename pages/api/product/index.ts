@@ -18,9 +18,9 @@ const handler = nc()
   .post(
     async (
       req: NextApiRequest & {
-        db: Mongoose
-        user: { _id: any; email: string }
-      }, // db is coming from the databaseMiddleware
+        db: Mongoose // db is coming from the databaseMiddleware,
+        user: { _id: any; email: string } // user is coming from the isAuthenticatedMiddleware
+      }, 
       res: NextApiResponse
     ) => {
       try {
@@ -45,13 +45,11 @@ const handler = nc()
       }
     }
   )
-  .get(
-    async (
-      req: NextApiRequest & { db: Mongoose }, // db is coming from the middleware
-      res: NextApiResponse
-    ) => {
-      const products = await ProductModel.find()
-      res.json({ products })
-    }
-  )
+  .get(async (req: NextApiRequest, res: NextApiResponse) => {
+    const products = await ProductModel.find().populate({
+      path: 'seller',
+      select: '-password',
+    })
+    res.json({ products })
+  })
 export default handler

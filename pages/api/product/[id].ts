@@ -4,6 +4,7 @@ import nc from 'next-connect'
 import middleware from 'server/middlewares/database'
 import { Mongoose } from 'mongoose'
 import ProductModel from 'server/models/product.model'
+import sellerModel from 'server/models/seller.model'
 
 const handler = nc()
   .use(middleware)
@@ -15,7 +16,16 @@ const handler = nc()
       try {
         const { id } = req.query
 
-        const product = await ProductModel.findById(id)
+        // in the definition, the product model has a reference to the seller model
+        // but since the seller has not been used yet (for it to be availalbe),
+        // this next line is a trivial and safe way to get the seller model active
+        // for .populate to work
+        sellerModel.db
+
+        const product = await ProductModel.findById(id).populate({
+          path: 'seller',
+          select: '-password',
+        })
 
         if (!product)
           return res
