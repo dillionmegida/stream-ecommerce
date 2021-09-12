@@ -5,7 +5,8 @@ import AuthForm from '@molecules/auth-form'
 import { toast } from 'react-toastify'
 import links from '@constants/links'
 import Link from 'next/link'
-import { authHeader, setCookie } from 'src/utils/cookie'
+import { setCookie } from 'src/utils/cookie'
+import getAuthBuyer from 'src/queries/getAuthBuyer'
 
 export default function BuyerLogin() {
   const [processing, setProcessing] = useState(false)
@@ -35,13 +36,7 @@ export default function BuyerLogin() {
   }
 
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: '/api/buyer/me',
-      headers: {
-        ...authHeader,
-      },
-    })
+    getAuthBuyer()
       .then(() => (window.location.href = '/buyer/dashboard'))
       .catch(() => {})
   }, [])

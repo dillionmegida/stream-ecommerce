@@ -5,7 +5,8 @@ import AuthForm from '@molecules/auth-form'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
 import links from '@constants/links'
-import { authHeader, setCookie } from 'src/utils/cookie'
+import { setCookie } from 'src/utils/cookie'
+import getAuthSeller from 'src/queries/getAuthSeller'
 
 export default function SellerLogin() {
   const [processing, setProcessing] = useState(false)
@@ -35,13 +36,7 @@ export default function SellerLogin() {
   }
 
   useEffect(() => {
-    axios({
-      method: 'GET',
-      url: '/api/seller/me',
-      headers: {
-        ...authHeader,
-      },
-    })
+    getAuthSeller()
       .then(() => (window.location.href = '/seller/dashboard'))
       .catch(() => {})
   }, [])
