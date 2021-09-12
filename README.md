@@ -1,6 +1,6 @@
 # Stream Ecommerce
 
-This is a sample project showing how to integrate [the React SDK for Stream](https://github.com/dillionmegida/stream-ecommerce) in an ecommerce application.
+This is a sample project showing how to integrate [the React SDK for Stream](https://getstream.io/chat/sdk/react/) in an ecommerce application.
 
 ## Table of Contents
 
