@@ -14,6 +14,7 @@ This is a sample project showing how to integrate [the React SDK for Stream](htt
   - [Adding the environment variables](#adding-the-environment-variables)
   - [Running the server](#running-the-server)
   - [Viewing the database](#viewing-the-database)
+- [Testing the project](#testing-the-project)
 - [Deployment](#deployment)
 - [Author](#author)
 - [License](#license)
@@ -93,6 +94,21 @@ And the application can be run on `localhost:3000`.
 When you open the MongoDB Compass to view the database, the database will only have the products collection, but it would be empty. To populate the database, you can signup as a seller. And in the Compass app, you'll see the "sellers" collection with the new seller.
 
 So, you can go ahead to add more models and collections.
+
+## Testing the project
+
+Now that you have the server running, here are things you can try to see the features of the app:
+
+- create a seller account
+- create a buyer account (on a different browser, or Incognito)
+- add a product on the seller account
+- view the product on the buyer account
+- click the start conversation button
+- send a message
+- on the seller account, go to the dashboard and view the product
+- then click the view conversation button
+- and chat with the buyer
+- you can also choose to create another buyer account, and create a conversation on the same project and see how both conversations are displayed on the seller's dashboard
 
 ### Deployment
 
