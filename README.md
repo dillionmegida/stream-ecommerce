@@ -75,7 +75,7 @@ JWT_SECRET_KEY=
 Copy all of these environment variables to `.env.local` and replace the values with your own.
 
 - You can get the `NEXT_PUBLIC_STREAM_API_KEY` and `STREAM_SECRET_KEY` from [the Stream Dashboard](https://dashboard.getstream.io/dashboard)
-- You can get the `MONGODB_URI` [here](https://github.com/dillionmegida/stream-ecommerce#configuring-your-database)
+- You can get the `MONGODB_URI` [here](#configuring-your-database)
 - Your `JWT_SECRET_KEY` can be any string. For example, "ecommerce-stream". It's used for creating tokens for authentication.
 
 ### Running the server
