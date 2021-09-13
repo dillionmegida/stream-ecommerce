@@ -32,7 +32,9 @@ const handler = nc()
         const newSeller = new SellerModel({
           email,
           password: hashedPassword,
-        }).save()
+        })
+
+        await newSeller.save()
 
         const token = createToken({
           _id: newSeller._id,
